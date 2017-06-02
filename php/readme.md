@@ -6,7 +6,7 @@
 Please note these files have been stripped from [nburgess.oudemo.com/blog](http://nburgess.oudemo.com/blog), and [http://a.cms.omniupdate.com/10/#testdrives/nburgess/www/](http://a.cms.omniupdate.com/10/#testdrives/nburgess/www/). This implementation utilizes the Foundation framework, so each script is tailored to output a specific HTML, keep this in mind when implementing. Happy Blogging.
 
 ##Outline
-A blog consists of three main parts, listing pages/assets, post files, and scripts. The blog listing page is a PCF which OUCampus outputs as an HTML page with function calls to external scripts, based on page parameters. See [Blog Listing Template](#listing) below for specific page params.  OUCampus holds each post as a PCF, XSL outputs two types of files, content (HTML) and data (XML). This data is taken upon page creation (post.tcf) and manually input via page properties and multi-edit.
+A blog consists of three main parts, listing pages/assets, post files, and scripts. The blog listing page is a PCF which OU Campus outputs as an HTML page with function calls to external scripts, based on page parameters. See [Blog Listing Template](#listing) below for specific page params.  OU Campus holds each post as a PCF, XSL outputs two types of files, content (HTML) and data (XML). This data is taken upon page creation (post.tcf) and manually input via page properties and multi-edit.
 Scripts are XSL and PHP (ASP to come.. maybe). XSL handles the XML output and to a lesser extent the HTML - it's mostly just boring content. Blog Assets are handled with a template-match, see [Assets](#assets) for more detail. PHP does the grunt work by crawling a given directory structure for XML post files, displaying content, and for pagination.
 
 ##Structure
