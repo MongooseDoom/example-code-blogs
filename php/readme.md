@@ -1,15 +1,15 @@
 ***The included source code, service and information is provided as is, and OmniUpdate makes no promises or guarantees about its use or misuse. The source code provided is recommended for advanced users and may not be compatible with all implementations of OU Campus.***
 
-#Blog Notes
+# Blog Notes
 
-##Preface
-Please note these files have been stripped from [nburgess.oudemo.com/blog](http://nburgess.oudemo.com/blog), and [http://a.cms.omniupdate.com/10/#testdrives/nburgess/www/](http://a.cms.omniupdate.com/10/#testdrives/nburgess/www/). This implementation utilizes the Foundation framework, so each script is tailored to output a specific HTML, keep this in mind when implementing. Happy Blogging.
+## Preface
+This implementation utilizes the Foundation framework, so each script is tailored to output a specific HTML, keep this in mind when implementing. Happy Blogging.
 
-##Outline
+## Outline
 A blog consists of three main parts, listing pages/assets, post files, and scripts. The blog listing page is a PCF which OU Campus outputs as an HTML page with function calls to external scripts, based on page parameters. See [Blog Listing Template](#listing) below for specific page params.  OU Campus holds each post as a PCF, XSL outputs two types of files, content (HTML) and data (XML). This data is taken upon page creation (post.tcf) and manually input via page properties and multi-edit.
 Scripts are XSL and PHP (ASP to come.. maybe). XSL handles the XML output and to a lesser extent the HTML - it's mostly just boring content. Blog Assets are handled with a template-match, see [Assets](#assets) for more detail. PHP does the grunt work by crawling a given directory structure for XML post files, displaying content, and for pagination.
 
-##Structure
+## Structure
 This is only a suggested structure, change it to suit your implementation.
 * PCF
 	* /blog/listing.pcf
@@ -26,7 +26,7 @@ This is only a suggested structure, change it to suit your implementation.
 * CSS
 	* /\_resources/css/blog/blog.css
 
-###Templates
+### Templates
 
 * Blog sections
 	* Creates necessary resource files (nav, _prop) and a post directory.
@@ -35,7 +35,7 @@ This is only a suggested structure, change it to suit your implementation.
 	* You may want more than the blog/index.pcf as a listing page, eg. a listing for each year.
 * Post page
 
-###PCF options
+### PCF options
 
 * <a name="listing">Listing page parameters</a>
 	* "Display Featured" choose to display "featured post" slide show.
@@ -58,14 +58,14 @@ This is only a suggested structure, change it to suit your implementation.
 	* Tags are managed via OU Campus tag management and thus added via Page Properties. 
 		* Add tags to a listing page to filter blog posts by specific tags.
 
-###Post Comments
+### Post Comments
 
 Are powered by a _Disqus asset_. This asset should contain a unique "disqus_shortname" given when setup at https://disqus.com/.
 
 	<div id="disqus_thread"></div>
 		<script type="text/javascript">
 		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-		var disqus_shortname = 'nburgess'; // required: replace example with your forum shortname
+		var disqus_shortname = 'your-forum-shortname'; // required: replace example with your forum shortname
 
 		/* * * DON'T EDIT BELOW THIS LINE * * */
 		(function() {
@@ -81,7 +81,7 @@ The Listing page should also contain disqus code to enable a count of comments f
 
 	<script type="text/javascript">
 		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-		var disqus_shortname = 'nburgess'; // required: replace example with your forum shortname
+		var disqus_shortname = 'your-forum-shortname'; // required: replace example with your forum shortname
 
 		/* * * DON'T EDIT BELOW THIS LINE * * */
 		(function () {
@@ -128,7 +128,7 @@ __Types available__: (all gather posts from defined _dir_, with respect to _limi
 4. "featured" - posts marked as _featured_.
 5. "page-related" - posts that have the same tags as the page the asset is on.
 6. "tag-related" - posts that have specific tags.
-	- using this type requires that an additional 'tag' attribute be used to specify what tags to look for.
+	- using this type requires that an additional 'tags' attribute be used to specify what tags to look for.
 	- eg. tags="consetetur, dolor sit amet" - (csv separated)
 
 Example: you want to display the most recent page-related (a post that shares the same tags) from the academics blog:
@@ -201,28 +201,28 @@ example: <blog-archive path="/_blog-dev/index.html" month="10" year="2016"/>
 * month - the start month to begin creating archive links (1-12)
 * year - the start year to begin listing archive links by month.
 
-##Scripts
+## Scripts
 Each post PCF is processed by XSL to output only the essential data as XML. PHP scripts output different lists of posts, featured, recent, related, etc.
 
 ###XSL
 
-####pubDate = dateTime
+#### pubDate = dateTime
 To prep the date variable "pudDate" an XSL function _(ou:toDateTime)_ converts the date given by the OU property _type="datetime"_ to a valid XSL dateTime object. This allows us to use XSL functions for dateTimes, namely _format-dateTime()_.
 
 Note: post.tmpl uses the OU System Variable $CurrentDate to output "Friday, January 30, 2015 3:17:33 PM PST". However accessing and saving via parameters converts this date format to "01/30/2015 03:17:33 PM". _(ou:toDateTime)_ accounts for both formats.
 
 Once we have a dateTime object we use _ou:pubDate()_ to output a valid "RFC822" pubDate string. This is required for a [valid RSS string](http://www.w3.org/Protocols/rfc822/#z28) and can be interpreted by PHP easily. There are also smaller functions available to convert dates and times to friendly formats, _ou:displayLongDate()_, _ou:dayOfWeekAbbrevEn()_, etc.
 
-###PHP
+### PHP
 
-####blog-functions.php
+#### blog-functions.php
 Takes parameters from listing.php to crawl defined directories and extracts data from posts XMLs. Builds _blogFile Class_, handles _conditions[]_ sent by listing.php, sorts whether is needs to be displayed, converts everything to JSON and passes it back to the display functions in listing.php. Also contains misc. functions, and the _Asset Listing_ functions, "Recent Posts", "Posts Tags", etc.
 
-####listing.php
+#### listing.php
 Takes parameters from the listing template page, queries blog-functions.php, converts JSON, echo's out main listing _displayBlogPost()_, and featured slideshow _displayFeaturedSlides()_.
 
-####rss.php
-Output a valid RSS feed based of URL parameters. By default [http://nburgess.oudemo.com/_resources/php/blog/rss.php](http://nburgess.oudemo.com/_resources/php/blog/rss.php) will return all blog posts. Valid URL params:
+#### rss.php
+Output a valid RSS feed based of URL parameters. By default this code will return all blog posts. Valid URL params:
 
  * "dir" - The directory where the script should begin crawling for post files, defaults to blog root.
  * "limit" - Maximum number of posts returned, default "" returns all.
