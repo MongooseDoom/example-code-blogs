@@ -86,7 +86,7 @@ Last Updated: Enter Date Here
         <!--$tags is a global variable contained in ouvariables.xsl, outputs as csv-->
         <xsl:variable name="page-tags" select="if($tags) then $tags else ''"/>
         <xsl:variable name="tags-from-asset">
-            <xsl:if test="@tag">
+            <xsl:if test="@tags">
                 <xsl:try>
                     <xsl:for-each select="tokenize(@tags, ',')">
                         <xsl:value-of select="if (position() != last()) then concat(normalize-space(.), ',') else normalize-space(.)"/>

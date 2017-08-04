@@ -189,7 +189,9 @@
 		if ($currentPage > 1) {
 			if ($page_start > 1) {
 				echo '<li><a href="?page=1'.$qstr.'" class="pagelink">1</a></li>';
-				echo '<li><a href="?page='.($page_start-1).$qstr.'" class="pagelink">...</a></li>';
+				if ($page_start > 2) {
+					echo '<li><a href="?page='.($page_start-1).$qstr.'" class="pagelink">...</a></li>';
+				}
 			}
 			
 		}

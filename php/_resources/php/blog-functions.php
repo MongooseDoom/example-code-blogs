@@ -292,7 +292,10 @@
 			<ul>
 				<?php
 				for($i = 0; $i < count($months); $i++) {
-					echo '<li><a href="'.$domain.$path.'?year='.$years[$i].'&month='.$months[$i].'">'.$display[$i].'</a></li>';
+					// only display links to months that have posts associated with them
+					if(count(get_all_post_files($path, array("year" => $years[$i], "month" => $months[$i])))) {
+						echo '<li><a href="'.$domain.$path.'?year='.$years[$i].'&month='.$months[$i].'">'.$display[$i].'</a></li>';
+					}
 				}?>
 			</ul>
 		</div>
