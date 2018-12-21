@@ -34,6 +34,7 @@ Last Updated: Enter Date Here
 	<xsl:param name="ou:lastname"/>
 	<xsl:param name="ou:firstname"/>
 	<xsl:param name="ou:email"/>
+	<xsl:param name="ou:stagingpath"/>
 	<xsl:param name="ou:httproot"/>
 	<xsl:param name="ou:ftproot"/>
 	<xsl:param name="ou:ftphome"/>

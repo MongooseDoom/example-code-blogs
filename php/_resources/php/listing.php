@@ -135,7 +135,7 @@
 						</div>
 						<div class="small-12 medium-8 columns">
 							<h5 class="show-for-medium-up"><?php echo $p->title; ?></h5>
-							<h5 class="show-for-small-only"><a href="<?php echo $p->link; ?>"><?php echo $p["title"]; ?></a></h5>
+							<h5 class="show-for-small-only"><a href="<?php echo $p->link; ?>"><?php echo $p->title; ?></a></h5>
 							<p class="small-bottom-margin"><a href="mailto:<?php echo $p->email; ?>"><?php echo $p->author; ?></a> - <em><?php echo $p->date; ?></em></p>
 							<p class="no-bottom-margin show-for-medium-up"><?php echo $p->desc; ?></p>
 						</div>

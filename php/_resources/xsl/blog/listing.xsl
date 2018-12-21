@@ -20,13 +20,11 @@ This XSL file is called first by the PCF file to guarantee that it will maintain
 	<xsl:param name="search-root" select="if(string-length(/document/ouc:properties[@label='config']/parameter[@name='search-root']) > 0) then /document/ouc:properties[@label='config']/parameter[@name='search-root'] else $ou:dirname"/>
 	
 	<xsl:template name="template-headcode">
-		<!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.3.15/slick.css"/> -->
-		<!-- <link rel="stylesheet" type="text/css" href="/_resources/css/blog/blog.css"/> -->
 		<xsl:if test="$ou:action = 'pub'">
 			<xsl:processing-instruction name="php">
-				require_once($_SERVER["DOCUMENT_ROOT"] . "/_resources/php/blog/listing.php");
+				require_once($_SERVER["DOCUMENT_ROOT"] . "/_resources/php/listing.php");
 				$tmp = array();
-				$tmp["tags"] = (isset($_GET["tags"]) ? htmlspecialchars($_GET["tags"]) : "<xsl:value-of select="$tags"/>";
+				$tmp["tags"] = (isset($_GET["tags"])) ? htmlspecialchars($_GET["tags"]) : "<xsl:value-of select="$tags"/>";
 				$tmp["author"] = (isset($_GET["author"])) ? htmlspecialchars($_GET["author"]) : "<xsl:value-of select="$post-author" />";
 				$tmp["year"] = (isset($_GET["year"])) ? htmlspecialchars($_GET["year"]) : "<xsl:value-of select="$post-year" />";
 				$tmp["month"] = (isset($_GET["month"])) ? htmlspecialchars($_GET["month"]) : "";
@@ -36,36 +34,12 @@ This XSL file is called first by the PCF file to guarantee that it will maintain
 		</xsl:if>
 	</xsl:template>
 	
-	<xsl:template name="template-footcode">
-		<!-- <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.15/slick.min.js"></script> -->
-		<!-- <xsl:if test="$ou:action = 'pub'">
-			<script>
-				$(function(){
-					<xsl:if test="ouc:properties[@label='config']/parameter[@name='featured-posts']/option[@value='true']/@selected='true'">
-						$(".featured-posts").has(".hide-featured").hide();
-						$(".featured-posts").slick({autoplay:true,autoplaySpeed:9500});
-					</xsl:if>
-				});
-			</script>
-		</xsl:if> -->
-	</xsl:template>
+	<xsl:template name="template-footcode"/>
 	
 	<xsl:template name="page-content">
 		<div class="row">
 			<div class="large-12 columns">
 				<h1><xsl:value-of select="ou:pcf-param('heading')"/></h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="small-10 columns">
-				<ul class="breadcrumbs"> 
-					<xsl:call-template name="breadcrumb">
-						<xsl:with-param name="path" select="$ou:dirname"/>								
-					</xsl:call-template>
-				</ul>
-			</div>
-			<div class="small-2 columns">
-				<a href="http://nburgess.oudemo.com/_resources/php/blog/rss.php"><i title="RSS Subscribe" class="fi-rss subscribe"></i></a>
 			</div>
 		</div>
 		<div class="row">

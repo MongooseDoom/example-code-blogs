@@ -24,24 +24,12 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="small-10 columns">
-				<ul class="breadcrumbs"> 
-					<xsl:call-template name="breadcrumb">
-						<xsl:with-param name="path" select="$ou:dirname"/>								
-					</xsl:call-template>
-				</ul>
-			</div>
-			<div class="small-2 columns">
-				<a href="http://nburgess.oudemo.com/_resources/php/blog/rss.php"><i title="RSS Subscribe" class="fi-rss subscribe"></i></a>
-			</div>
-		</div>
-		<div class="row">
 			<div class="{if (ou:pcf-param('right-enable') = 'true') then 'large-8' else 'large-12'} columns">
 				<p><xsl:value-of select="ou:display-long-date(post-info/ouc:div[@label='post-date'])" />&nbsp;<a href="mailto:{$email}"><xsl:value-of select="$author"/></a></p>
 				<!-- Main Content Region -->
 				<xsl:apply-templates select="ouc:div[@label='maincontent']" />
 				<xsl:if test="ouc:properties[@label='config']/parameter[@name='disqus-enable']/option[@value='true']/@selected='true'">
-					{{a:44641}}
+				<!-- Insert LDP Comment asset here -->
 				</xsl:if>
 			</div>
 			<xsl:if test="ou:pcf-param('right-enable') = 'true'">

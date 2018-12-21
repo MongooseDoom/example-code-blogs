@@ -268,8 +268,10 @@
 	 * @return none
 	 */
 	function display_archive_links($domain, $path, $month, $year) {
-		$start    = (new DateTime($year.'-'.$month.'-01'))->modify('first day of this month');
-		$end      = (new DateTime('now'))->modify('first day of this month');
+		$startDateTime = (new DateTime($year.'-'.$month.'-01'));
+		$start = $startDateTime -> modify('first day of this month');
+		$endDateTime = (new DateTime('now'));
+		$end = $endDateTime -> modify('first day of this month');
 		$interval = DateInterval::createFromDateString('1 month');
 		$period   = new DatePeriod($start, $interval, $end);
 		$months = array();

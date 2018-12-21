@@ -21,7 +21,7 @@
 <option value="panel" selected="false">Panel Region</option>
 <option value="region" selected="true">Editable Region</option>
 </parameter>
-		<parameter section="Blog Options" name="search-root" group="Everyone" prompt="Blog Root Directory" alt="Determines to root directory to search for blog posts. Default value is the current directory. (eg. '/blog/'')"></parameter>
+		<parameter section="Blog Options" name="search-root" group="Everyone" prompt="Blog Root Directory" alt="Determines to root directory to search for blog posts. Default value is the current directory. (eg. '/blog/'')">/posts/</parameter>
 		<parameter name="featured-posts" type="checkbox" prompt="Featured" alt="Check the box to enable the featured post content slider." group="Everyone">
 <option value="true" selected="true">Featured Slides</option>
 </parameter>
@@ -30,9 +30,9 @@
 		<parameter name="post-author" group="Everyone" prompt="Author Filter" alt="Specify an author to filter the listing page results (leave blank for no filter)."></parameter>
 		<parameter name="post-limit" group="Everyone" prompt="Post per Page" alt="Determines the amount of posts to display per page.">4</parameter>
 		<parameter name="tag-filter-strength" group="Everyone" type="select" prompt="Tag Filter Strength" alt="Determines if blog posts must have all matching tags or at least one matching tag to be included in the listing.">
-			<option value="loose" selected="true">At Least One</option>
-			<option value="strict" selected="false">All Tags</option>
-		</parameter>
+<option value="loose" selected="true">At Least One</option>
+<option value="strict" selected="false">All Tags</option>
+</parameter>
 	</ouc:properties>
 	
 	<!-- Meta page properites. Defines the meta elements that are placed in the head of the HTML document. -->
@@ -54,13 +54,13 @@
 	
 	<ouc:div label="right-content" group="Everyone" button-text="Content Region"><ouc:editor csspath="/_resources/ou/editor/content.css" cssmenu="/_resources/ou/editor/styles.txt" wysiwyg-class="rightcontent"/>
 		<h5>Recent Posts</h5>
-		{{a:44417}}
+		<!-- insert recent posts asset here -->
 		<hr/>
 		<h5>Featured Posts</h5>
-		{{a:44416}}
+		<!-- insert featured posts asset here -->
 		<hr/>
 		<h5>Posts Tags</h5>
-		{{a:44418}}
+		<!-- insert posts tags asset here -->
 		<hr/>
 	</ouc:div>
 

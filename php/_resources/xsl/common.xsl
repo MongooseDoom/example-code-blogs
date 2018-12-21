@@ -22,7 +22,6 @@ Last Updated: Enter Date Here
 	<xsl:import href="_shared/template-matches.xsl"/>
 	<xsl:import href="_shared/variables.xsl"/>
 	<xsl:import href="_shared/functions.xsl"/>
-	<xsl:import href="_shared/breadcrumb.xsl"/>
 	
 	<xsl:output method="html" encoding="UTF-8" indent="yes" omit-xml-declaration="yes"/>
 	<xsl:strip-space elements="*"/>
