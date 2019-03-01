@@ -124,7 +124,7 @@ Each post PCF is processed by XSL to output only the essential data as XML. C# s
 ###XSL
 
 ####pubDate = dateTime
-To prep the date variable "pudDate" an XSL function _(ou:toDateTime)_ converts the date given by the OU property _type="datetime"_ to a valid XSL dateTime object. This allows us to use XSL functions for dateTimes, namely _format-dateTime()_.
+To prep the date variable "pubDate" an XSL function _(ou:toDateTime)_ converts the date given by the OU property _type="datetime"_ to a valid XSL dateTime object. This allows us to use XSL functions for dateTimes, namely _format-dateTime()_.
 
 Note: post.tmpl uses the OU System Variable $CurrentDate to output "Friday, January 30, 2015 3:17:33 PM PST". However accessing and saving via parameters converts this date format to "01/30/2015 03:17:33 PM". _(ou:toDateTime)_ accounts for both formats.
 

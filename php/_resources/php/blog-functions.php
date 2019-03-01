@@ -57,7 +57,7 @@
 	 */
 	function get_all_post_files($dirpath = "/", $conditions = array()){
 		$dir = array("fullpath"=>$_SERVER["DOCUMENT_ROOT"].$dirpath,"currentpath"=>$dirpath);
-		$exclude = array(".","..","_resources", "_old-ttu-dev");
+		$exclude = array(".","..","_resources", "_dev");
 		$files = array();
 
 		foreach(array_diff(scandir($dir["fullpath"]),$exclude) as $sd){
