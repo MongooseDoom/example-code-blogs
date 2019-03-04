@@ -204,7 +204,7 @@ example: <blog-archive path="/_blog-dev/index.html" month="10" year="2016"/>
 ## Scripts
 Each post PCF is processed by XSL to output only the essential data as XML. PHP scripts output different lists of posts, featured, recent, related, etc.
 
-###XSL
+### XSL
 
 #### pubDate = dateTime
 To prep the date variable "pubDate" an XSL function _(ou:toDateTime)_ converts the date given by the OU property _type="datetime"_ to a valid XSL dateTime object. This allows us to use XSL functions for dateTimes, namely _format-dateTime()_.
@@ -219,7 +219,7 @@ Once we have a dateTime object we use _ou:pubDate()_ to output a valid "RFC822" 
 Takes parameters from listing.php to crawl defined directories and extracts data from posts XMLs. Builds _blogFile Class_, handles _conditions[]_ sent by listing.php, sorts whether is needs to be displayed, converts everything to JSON and passes it back to the display functions in listing.php. Also contains misc. functions, and the _Asset Listing_ functions, "Recent Posts", "Posts Tags", etc.
 
 #### listing.php
-Takes parameters from the listing template page, queries blog-functions.php, converts JSON, echo's out main listing _displayBlogPost()_, and featured slideshow _displayFeaturedSlides()_.
+Takes parameters from the listing template page, queries blog-functions.php, converts JSON, echo's out main listing _display\_blog\_post()_, and featured slideshow _display\_featured\_slides()_.
 
 #### rss.php
 Output a valid RSS feed based of URL parameters. By default this code will return all blog posts. Valid URL params:
