@@ -103,7 +103,7 @@
 					<h4><a href="<?php echo $post->link; ?>" target="_blank"><?php echo $post->title; ?></a></h4>
 				</div>
 				<ul class="entry-meta">
-					<li><i class="icon-calendar3"></i> <?php echo $post->displayDate; ?></li>
+					<li><i class="icon-calendar3"></i> <?php echo $post->date; ?></li>
 				</ul>
 			</div>
 		</div>
