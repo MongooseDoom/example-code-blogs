@@ -388,10 +388,10 @@
 	 */
 	function getQueryString($t = 0, $a = 0, $y = 0, $m = 0) {
 		$qstr = "";
-		$qstr .= (isset($_GET["tags"]) && $t > 0) ? "&tags=".htmlspecialchars($_GET["tags"]) : "";
-		$qstr .= (isset($_GET["author"]) && $a > 0) ? "&author=".htmlspecialchars($_GET["author"]) : "";
-		$qstr .= (isset($_GET["year"]) && $y > 0) ? "&year=".htmlspecialchars($_GET["year"]) : "";
-		$qstr .= (isset($_GET["month"]) && $m > 0) ? "&month=".htmlspecialchars($_GET["month"]) : "";
+		$qstr .= (isset($_GET["tags"]) && $t > 0) ? "&tags=".urlencode($_GET["tags"]) : "";
+		$qstr .= (isset($_GET["author"]) && $a > 0) ? "&author=".urlencode($_GET["author"]) : "";
+		$qstr .= (isset($_GET["year"]) && $y > 0) ? "&year=".urlencode($_GET["year"]) : "";
+		$qstr .= (isset($_GET["month"]) && $m > 0) ? "&month=".urlencode($_GET["month"]) : "";
 		return $qstr;
 	}
 
